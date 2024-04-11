@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-        <div class="container mt-5">
+        <div class="container my-5">
           <a href="{{route('comics.create')}}" class="btn btn-outline-primary mb-3">Add a Comic</a>
             <div class="row row-cols-1 row-cols-md-3 g-4">
               
@@ -21,6 +21,8 @@
                   </a>
               </div>
               @endforeach
+
+              
 
             </div>
 
