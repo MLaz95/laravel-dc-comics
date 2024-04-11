@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::redirect('/', '/comics');
 Route::resource('comics', ComicController::class);

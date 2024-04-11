@@ -40,5 +40,6 @@
             </div>
         </div>
     </div>
+    <a href="{{route('comics.index')}}" class="btn btn-outline-primary m-3">Back</a>
 </div>
 @endsection
