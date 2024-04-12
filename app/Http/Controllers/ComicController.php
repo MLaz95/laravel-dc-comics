@@ -76,7 +76,6 @@ class ComicController extends Controller
         $comic->type = $request->type;
         $comic->artists = json_encode(explode(', ', $request->artists));
         $comic->writers = json_encode(explode(', ', $request->writers));
-
         $comic->save();
 
         return redirect()->route('comics.show', $comic->id);
@@ -85,8 +84,9 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }
