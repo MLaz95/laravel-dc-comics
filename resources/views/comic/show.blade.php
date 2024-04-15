@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container my-5">
         <div class="d-flex justify-content-between my-3">
             <a href="{{ route('comics.index') }}" class="btn btn-outline-primary m-3">Back</a>
 
