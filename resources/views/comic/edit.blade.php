@@ -12,7 +12,7 @@
     
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ $comic->title }}">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ $comic->title }}" required>
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -42,7 +42,7 @@
     
             <div class="mb-3">
                 <label for="price" class="form-label">price</label>
-                <input type="number" min="0" step="0.01" class="form-control  @error('price') is-invalid @enderror" id="price" name="price" value="{{ substr($comic->price, 1) }}">
+                <input type="number" min="0" step="0.01" class="form-control  @error('price') is-invalid @enderror" id="price" name="price" value="{{ substr($comic->price, 1) }}" required>
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -62,7 +62,7 @@
     
             <div class="mb-3">
                 <label for="sale_date" class="form-label">sale date</label>
-                <input type="date" class="form-control  @error('sale_date') is-invalid @enderror" id="sale_date" name="sale_date" value="{{ $comic->sale_date}}">
+                <input type="date" class="form-control  @error('sale_date') is-invalid @enderror" id="sale_date" name="sale_date" value="{{ $comic->sale_date}}" required>
                 @error('sale_date')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -72,7 +72,7 @@
     
             <div class="mb-3">
                 <label for="type" class="form-label">type</label>
-                <input type="text" class="form-control  @error('type') is-invalid @enderror" id="type" name="type" value="{{ $comic->type }}">
+                <input type="text" class="form-control  @error('type') is-invalid @enderror" id="type" name="type" value="{{ $comic->type }}" required>
                 @error('type')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -82,7 +82,7 @@
     
             <div class="mb-3">
                 <label for="artists" class="form-label">artists</label>
-                <input artists="text" class="form-control  @error('artists') is-invalid @enderror" id="artists" name="artists" value="{{ implode(', ', json_decode($comic->artists)) }}">
+                <input artists="text" class="form-control  @error('artists') is-invalid @enderror" id="artists" name="artists" value="{{ implode(', ', json_decode($comic->artists)) }}" required>
                 @error('artists')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -91,8 +91,8 @@
             </div>
     
             <div class="mb-3">
-                <label for="writers" class="form-label">writers</label>
-                <input writers="text" class="form-control  @error('writers') is-invalid @enderror" id="writers" name="writers" value="{{ implode(', ', json_decode($comic->writers)) }}">
+                <label for="writers" class="form-label">writers</label> required
+                <input writers="text" class="form-control  @error('writers') is-invalid @enderror" id="writers" name="writers" value="{{ implode(', ', json_decode($comic->writers)) }}" required>
                 @error('writers')
                     <div class="invalid-feedback">
                         {{ $message }}
