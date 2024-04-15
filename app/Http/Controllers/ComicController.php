@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -30,6 +31,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request->all());
+
         $newComic = new Comic();
         $newComic->title = $request->title;
         $newComic->description = $request->description;
@@ -67,6 +70,8 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $this->validation($request->all());
+
         $comic->title = $request->title;
         $comic->description = $request->description;
         $comic->thumb = $request->thumb;
@@ -88,5 +93,26 @@ class ComicController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    private function validation($data){
+        $validator = Validator::make($data, [
+            'title' => 'required|max:50',
+            'description' => 'nullable|max:5000',
+            'thumb' => 'nullable|max:1000',
+            'price' => 'required|decimal:2',
+            'series' => 'nullable|max:50',
+            'sale_date' => 'required|date',
+            'type' => 'required|max:50',
+            'artists' => 'required',
+            'writers' => 'required',
+        ], [
+            
+            'required' => "Il campo :attribute è obbligatorio",
+            'max' => 'Il campo :attribute non può avere più di :max caratteri',
+            'price.decimal' => 'Il campo price deve essere espresso nel sequente formato 0.00',
+            'sale_date' => 'Il campo date deve essere una data valida'
+            
+        ])->validate();
     }
 }
