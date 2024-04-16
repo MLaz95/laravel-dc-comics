@@ -35,16 +35,7 @@ class ComicController extends Controller
         $request->validated();
 
         $newComic = new Comic();
-        $newComic->title = $request->title;
-        $newComic->description = $request->description;
-        $newComic->thumb = $request->thumb;
-        $newComic->price = '$' . $request->price;
-        $newComic->series = $request->series;
-        $newComic->sale_date = $request->sale_date;
-        $newComic->type = $request->type;
-        $newComic->artists = json_encode(explode(', ', $request->artists));
-        $newComic->writers = json_encode(explode(', ', $request->writers));
-
+        $newComic->fill($request->all());
         $newComic->save();
 
         return redirect()->route('comics.index');
@@ -72,16 +63,7 @@ class ComicController extends Controller
     public function update(StoreComicRequest $request, Comic $comic)
     {
         $request->validated();
-
-        $comic->title = $request->title;
-        $comic->description = $request->description;
-        $comic->thumb = $request->thumb;
-        $comic->price = '$' . $request->price;
-        $comic->series = $request->series;
-        $comic->sale_date = $request->sale_date;
-        $comic->type = $request->type;
-        $comic->artists = json_encode(explode(', ', $request->artists));
-        $comic->writers = json_encode(explode(', ', $request->writers));
+        $comic->fill($request->all());
         $comic->save();
 
         return redirect()->route('comics.show', $comic->id);
